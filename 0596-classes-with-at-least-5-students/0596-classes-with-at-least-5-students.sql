@@ -1,5 +1,2 @@
 -- Write your PostgreSQL query statement below
-SELECT class 
-FROM Courses
-GROUP BY class
-HAVING COUNT(student) >= '5'
+SELECT class FROM Courses GROUP BY class HAVING count(*)>4
