@@ -1,0 +1,6 @@
+SELECT user_id,(MAX(post_date::date) - MIN(post_date::date)) AS days_betweeen
+FROM posts
+WHERE post_date < '01/01/2022'
+AND post_date >= '01/01/2021'
+GROUP BY user_id
+HAVING COUNT(*) >= 2
