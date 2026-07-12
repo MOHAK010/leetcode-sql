@@ -1,0 +1,15 @@
+  WITH query AS(
+  SELECT e.employee_id ,
+  COUNT(DISTINCT q.query_id) as unique_queries
+  FROM employees e
+  LEFT JOIN queries q
+  ON q.employee_id = e.employee_id
+  AND q.query_starttime >= '01/07/2023'
+  AND q.query_starttime < '01/10/2023'
+  GROUP BY e.employee_id
+  ) 
+  
+  SELECT unique_queries, COUNT(employee_id) AS employee_count
+  FROM query
+  GROUP BY unique_queries
+  ORDER BY UNIQUE_QUERIES

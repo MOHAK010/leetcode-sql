@@ -1,0 +1,9 @@
+SELECT u.city, COUNT(
+CASE WHEN status = 'Completed' THEN 1 
+END) AS total_users
+FROM users u
+JOIN trades t
+ON u.user_id = t.user_id
+GROUP BY u.city
+ORDER BY total_users DESC
+LIMIT 3
